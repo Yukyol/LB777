@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:15
+    container_name: ford_workshop_db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ford_workshop
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    container_name: adminer_client
+    restart: always
+    ports:
+      - "8080:8080"
+
+volumes:
+  db_data:
